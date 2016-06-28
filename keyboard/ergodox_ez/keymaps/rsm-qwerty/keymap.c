@@ -336,37 +336,60 @@ void matrix_scan_user(void) {
     ergodox_right_led_2_off();
     ergodox_right_led_3_off();
     ergodox_led_all_set(LED_BRIGHTNESS_LO);
+
+    if (host_keyboard_leds() & 0x01)
+    {
+        ergodox_right_led_1_on();
+    }
+
+    if (host_keyboard_leds() & 0x02)
+    {
+        ergodox_right_led_2_on();
+    }
+
+    if (host_keyboard_leds() & 0x04)
+    {
+        ergodox_right_led_3_on();
+    }
+
     switch (layer) {
       // TODO: Make this relevant to the ErgoDox EZ.
         case 1:
+            ergodox_right_led_1_set(LED_BRIGHTNESS_MD);
             ergodox_right_led_1_on();
             break;
         case 2:
+            ergodox_right_led_2_set(LED_BRIGHTNESS_MD);
             ergodox_right_led_2_on();
             break;
         case 3:
+            ergodox_right_led_1_set(LED_BRIGHTNESS_MD);
+            ergodox_right_led_2_set(LED_BRIGHTNESS_MD);
             ergodox_right_led_1_on();
             ergodox_right_led_2_on();
             break;
         case 4:
+            ergodox_right_led_3_set(LED_BRIGHTNESS_MD);
             ergodox_right_led_3_on();
             break;
         case 5:
+            ergodox_right_led_1_set(LED_BRIGHTNESS_MD);
+            ergodox_right_led_3_set(LED_BRIGHTNESS_MD);
             ergodox_right_led_1_on();
             ergodox_right_led_3_on();
             break;
         case 6:
+            ergodox_right_led_2_set(LED_BRIGHTNESS_MD);
+            ergodox_right_led_3_set(LED_BRIGHTNESS_MD);
             ergodox_right_led_2_on();
             ergodox_right_led_3_on();
             break;
         case 7:
-            ergodox_right_led_1_on();
-            ergodox_right_led_2_on();
-            ergodox_right_led_3_on();
+            ergodox_led_all_set(LED_BRIGHTNESS_MD);
+            ergodox_led_all_on();
             break;
         case 8:
-            //ergodox_blink_all_leds();
-            ergodox_led_all_set(LED_BRIGHTNESS_HI);
+            ergodox_right_led_1_set(LED_BRIGHTNESS_HI);
             ergodox_right_led_1_on();
             break;
         case 9:    
